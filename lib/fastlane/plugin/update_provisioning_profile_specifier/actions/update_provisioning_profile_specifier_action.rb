@@ -29,6 +29,12 @@ module Fastlane
               config.build_settings[specifier_key] = cur + params[:new_specifier]
             else
               config.build_settings[specifier_key] = params[:new_specifier]
+              if params[:team_id]
+                config.build_settings['DEVELOPMENT_TEAM'] = params[:team_id]
+              end
+              if params[:bundle_id]
+                config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = params[:bundle_id]
+              end
             end
           end
         end
