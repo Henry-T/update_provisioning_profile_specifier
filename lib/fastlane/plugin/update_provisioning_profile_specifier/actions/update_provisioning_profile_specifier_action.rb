@@ -4,8 +4,6 @@ module Fastlane
       def self.run(params)
         require 'xcodeproj'
 
-        UI.message("good")
-
         specifier_key = 'PROVISIONING_PROFILE_SPECIFIER'
 
         # assign folder from the parameter or search for an .xcodeproj file
