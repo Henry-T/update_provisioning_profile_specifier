@@ -4,6 +4,8 @@ module Fastlane
       def self.run(params)
         require 'xcodeproj'
 
+        UI.message("good")
+
         specifier_key = 'PROVISIONING_PROFILE_SPECIFIER'
 
         # assign folder from the parameter or search for an .xcodeproj file
@@ -83,6 +85,21 @@ module Fastlane
        optional: true,
   default_value: false,
       is_string: false
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :team_id,
+       # env_name: "UPDATE_PROVISIONING_PROFILE_SPECIFIER_APPEND",
+    description: ["team_id"],
+       optional: true,
+  default_value: false,
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :bundle_id,
+       # env_name: "UPDATE_PROVISIONING_PROFILE_SPECIFIER_APPEND",
+    description: ["True to append 'new_specifier' to the end of the exxisting specifier.",
+                  "This works well if you have provisioning profiles for the same project with different configurations"],
+       optional: true,
+  default_value: false,
           )
         ]
       end
