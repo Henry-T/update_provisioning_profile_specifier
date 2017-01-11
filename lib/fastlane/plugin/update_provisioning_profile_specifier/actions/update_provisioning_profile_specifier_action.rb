@@ -35,8 +35,10 @@ module Fastlane
               if params[:bundle_id]
                 config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = params[:bundle_id]
               end
-              config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
-              config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
+              if params[:code_sign_identity]
+                config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
+                config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
+              end
             end
           end
         end
@@ -96,8 +98,14 @@ module Fastlane
           FastlaneCore::ConfigItem.new(
             key: :bundle_id,
        # env_name: "UPDATE_PROVISIONING_PROFILE_SPECIFIER_APPEND",
-    description: ["True to append 'new_specifier' to the end of the exxisting specifier.",
-                  "This works well if you have provisioning profiles for the same project with different configurations"],
+    description: ["bundle_id"],
+       optional: true,
+  default_value: false,
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :code_sign_identity,
+       # env_name: "UPDATE_PROVISIONING_PROFILE_SPECIFIER_APPEND",
+    description: ["code_sign_identity"],
        optional: true,
   default_value: false,
           )
