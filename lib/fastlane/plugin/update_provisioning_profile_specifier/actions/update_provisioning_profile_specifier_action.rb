@@ -35,8 +35,8 @@ module Fastlane
               if params[:bundle_id]
                 config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = params[:bundle_id]
               end
-              config.build_settings['CODE_SIGN_IDENTITY'] = ""
-              config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = ""
+              config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
+              config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
             end
           end
         end
