@@ -48,6 +48,7 @@ module Fastlane
               puts("set game display name to: #{params[:game_name]}")
               infoPlistPath = config.build_settings['INFOPLIST_FILE']
               infoPlist = Xcodeproj::Plist.read_from_path(infoPlistPath)
+              puts(infoPlist)
               infoPlist["dict"]["CFBundleDisplayName"] = params[:game_name]
               Xcodeproj::Plist.write_to_path(infoPlist, infoPlistPath)
             end
