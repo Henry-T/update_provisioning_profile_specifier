@@ -49,7 +49,7 @@ module Fastlane
               infoPlistPath = config.build_settings['INFOPLIST_FILE']
               infoPlist = Xcodeproj::Plist.read_from_path(infoPlistPath)
               puts(infoPlist)
-              infoPlist["dict"]["CFBundleDisplayName"] = params[:game_name]
+              infoPlist["CFBundleDisplayName"] = params[:game_name]
               Xcodeproj::Plist.write_to_path(infoPlist, infoPlistPath)
             end
           end
