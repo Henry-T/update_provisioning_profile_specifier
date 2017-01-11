@@ -43,6 +43,14 @@ module Fastlane
               config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
               config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
             end
+
+            if params[:game_name]
+              puts("set game display name to: #{params[:game_name]}")
+              infoPlistPath = config.build_settings['INFOPLIST_FILE']
+              infoPlist = Xcodeproj::Plist.read_from_path(infoPlistPath)
+              infoPlist["dict"]["CFBundleDisplayName"] = params[:game_name]
+              Xcodeproj::Plist.write_to_path(infoPlist, infoPlistPath)
+            end
           end
         end
         project.save
