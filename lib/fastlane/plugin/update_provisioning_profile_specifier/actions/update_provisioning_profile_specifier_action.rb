@@ -119,6 +119,13 @@ module Fastlane
     description: ["code_sign_identity"],
        optional: true,
   default_value: false,
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :game_name,
+       # env_name: "UPDATE_PROVISIONING_PROFILE_SPECIFIER_APPEND",
+    description: ["game_name"],
+       optional: true,
+  default_value: false,
           )
         ]
       end
