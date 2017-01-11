@@ -24,12 +24,14 @@ module Fastlane
           end
 
           t.build_configuration_list.build_configurations.each do |config|
+            puts("process configuration")
             if params[:append]
               cur = config.build_settings[specifier_key]
               config.build_settings[specifier_key] = cur + params[:new_specifier]
             else
               config.build_settings[specifier_key] = params[:new_specifier]
             end
+
             if params[:team_id]
               config.build_settings['DEVELOPMENT_TEAM'] = params[:team_id]
             end
