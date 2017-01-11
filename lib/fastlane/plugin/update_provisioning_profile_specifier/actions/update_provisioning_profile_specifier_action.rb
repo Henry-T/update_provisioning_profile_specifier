@@ -29,16 +29,17 @@ module Fastlane
               config.build_settings[specifier_key] = cur + params[:new_specifier]
             else
               config.build_settings[specifier_key] = params[:new_specifier]
-              if params[:team_id]
-                config.build_settings['DEVELOPMENT_TEAM'] = params[:team_id]
-              end
-              if params[:bundle_id]
-                config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = params[:bundle_id]
-              end
-              if params[:code_sign_identity]
-                config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
-                config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
-              end
+            end
+            if params[:team_id]
+              config.build_settings['DEVELOPMENT_TEAM'] = params[:team_id]
+            end
+            if params[:bundle_id]
+              config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = params[:bundle_id]
+            end
+            puts("code_sign_identity: #{params[:code_sign_identity]}")
+            if params[:code_sign_identity]
+              config.build_settings['CODE_SIGN_IDENTITY'] = params[:code_sign_identity]
+              config.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = params[:code_sign_identity]
             end
           end
         end
